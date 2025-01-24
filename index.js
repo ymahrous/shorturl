@@ -28,7 +28,7 @@ app.get('/api/hello', function(req, res) {
 
 // connect MongoDB
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
-mongoose.connect("mongodb+srv://admin:SXguwyRSldWJjoNO@shorturl.bhkcg.mongodb.net/?retryWrites=true&w=majority&appName=shorturl", clientOptions).then(() => console.log('MongoDB connected successfully')).catch((err) => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGO_URI, clientOptions).then(() => console.log('MongoDB connected successfully')).catch((err) => console.error('MongoDB connection error:', err));
 
 const urlSchema = new mongoose.Schema({
   original_url: { type: String, required: true },
